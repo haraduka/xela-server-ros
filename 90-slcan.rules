@@ -1,0 +1,5 @@
+# slcan autoloader
+
+ACTION=="add", ATTRS{interface}=="VScom USB-CAN Plus", ENV{SUBSYSTEM}=="tty", RUN+="/usr/bin/logger [udev] SLCAN device detected - running slcan_add.sh!", RUN+="/usr/local/bin/slcan_add_wrapper.sh $kernel"
+
+ACTION=="remove", RUN+="/usr/bin/logger [udev] SLCAN device removed", RUN+="/usr/local/bin/slcan_remove.sh $kernel"
